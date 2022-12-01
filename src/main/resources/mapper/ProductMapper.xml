@@ -17,4 +17,10 @@
        SELECT * FROM tbl_product
     </select>
 
+    <select id="findById" parameterType="java.lang.Integer" resultMap="productResultMap">
+        SELECT * FROM tbl_product where product_id=#{productId}
+    </select>
+
+
+
 </mapper>
