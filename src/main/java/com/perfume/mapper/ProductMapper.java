@@ -11,7 +11,7 @@ public interface ProductMapper {
 
     List<ProductModel> findAll();
 
-    ProductModel findById(ProductDTO productDTO);
+    ProductModel findById(int productId);
 
 
 }

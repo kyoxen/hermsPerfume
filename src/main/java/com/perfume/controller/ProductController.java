@@ -29,7 +29,7 @@ public class ProductController {
 
     @PostMapping("/list/id")
     ResponseVO<ProductModel> getProductId(@RequestBody ProductDTO productDTO) {
-     ProductModel productModel = productMapper.findById(productDTO);
+     ProductModel productModel = productMapper.findById(productDTO.getProductId());
         return ResponseHelper.success(productModel);
     }
 
