@@ -1,18 +1,23 @@
 package com.perfume.controller;
 
 
+
 import com.perfume.dto.ProductDTO;
 import com.perfume.mapper.ProductMapper;
 import com.perfume.model.ProductModel;
 import com.perfume.vo.ResponseHelper;
 import com.perfume.vo.ResponseVO;
+
+
+import org.springframework.util.Assert;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
-import java.util.Collections;
+
 import java.util.List;
 
 @RestController
@@ -29,9 +34,15 @@ public class ProductController {
 
     @PostMapping("/list/id")
     ResponseVO<ProductModel> getProductId(@RequestBody ProductDTO productDTO) {
-     ProductModel productModel = productMapper.findById(productDTO.getProductId());
-        return ResponseHelper.success(productModel);
-    }
 
+        ProductModel productModel = productMapper.findById(productDTO.getProductId());
+
+            if (productModel == null) {
+                return ResponseHelper.nullData();
+            }
+            else {
+                return ResponseHelper.success(productModel);
+            }
+        }
 
 }
