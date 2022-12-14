@@ -10,4 +10,6 @@ public class CustomerModel {
     private String customerLastName;
     private String address;
     private String phone;
+
+    private String herms;
 }
